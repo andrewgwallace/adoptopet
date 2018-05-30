@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Puppy from './components/Puppy'
 
@@ -9,6 +8,7 @@ class App extends Component {
   }
 
   componentWillMount = async () => {
+    // console.log("Hello")
     const response = await fetch('/api/puppies')
     const json = await response.json()
     console.log(json.puppies)

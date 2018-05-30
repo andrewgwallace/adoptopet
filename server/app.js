@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const logger = ('morgan');
+const logger = require('morgan');
 const bodyParser = require('body-parser')
 const cors = require('cors');
 const path = require("path");
@@ -11,9 +11,11 @@ const knex = require("../db/knex");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
+app.use(logger('dev'));
 
 app.get("/", (req, res, next) => {
-  const index = path.join(__dirname, "../ui/build/index.html");
+  const index = path.join(__dirname, "../client/build/index.html");
+  console.log(index)
   res.sendFile(index);
 });
 
