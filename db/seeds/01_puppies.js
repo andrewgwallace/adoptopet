@@ -1,10 +1,10 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('puppy').del()
+  return knex('puppies').del()
     .then(function () {
       // Inserts seed entries
-      return knex('puppy').insert([
+      return knex('puppies').insert([
         {"name":"Ginger", "breed":"Black Lab", "weight":80, "adopted":true},
         {"name":"Buffy","breed":"mix","weight":68,"adopted":true},
         {"name":"Schatzi","breed":"mix","weight":40,"adopted":false},

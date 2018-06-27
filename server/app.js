@@ -7,13 +7,14 @@ const path = require("path");
 const PORT = process.env.PORT || 3004
 const listener = () => console.log(`Listening on port: ${PORT}`)
 const knex = require("../db/knex");
+const puppyRoute = require("./routes/puppies");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
 app.use(logger('dev'));
 
-app.use('/api/puppies', require('./routes/puppies'));
+app.use('/api/puppies', puppyRoute );
 
 // handle error
 app.use((err, req, res, next) => {

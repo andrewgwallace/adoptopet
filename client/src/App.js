@@ -8,10 +8,9 @@ class App extends Component {
   }
 
   componentWillMount = async () => {
-    console.log("Hello")
     const response = await fetch('/api/puppies')
     const json = await response.json()
-    console.log(json)
+    console.log(response)
     // if (json.puppies) this.setState({puppies: json.puppies});
   }
   render() {
