@@ -13,15 +13,16 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
 app.use(logger('dev'));
 
-app.get("/", (req, res, next) => {
-  const index = path.join(__dirname, "../client/build/index.html");
-  console.log(index)
-  res.sendFile(index);
-});
+app.use('/api/puppies', require('./routes/puppies'));
 
-app.get('/api/puppies', (req, res, next) => {
-  knex('puppy')
-  .then(puppies => res.json({puppies: puppies}))
-  .catch(error => { console.error(error); })
+// handle error
+app.use((err, req, res, next) => {
+  const status = err.status || 500
+  res.status(status).json({ error: err })
 })
+// not found
+app.use((req, res, next) => {
+  res.status(404).json({ error: { message: "Not found." } })
+})
+
 app.listen(PORT, listener);

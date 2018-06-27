@@ -8,11 +8,11 @@ class App extends Component {
   }
 
   componentWillMount = async () => {
-    // console.log("Hello")
+    console.log("Hello")
     const response = await fetch('/api/puppies')
     const json = await response.json()
-    console.log(json.puppies)
-    if (json.puppies) this.setState({puppies: json.puppies});
+    console.log(json)
+    // if (json.puppies) this.setState({puppies: json.puppies});
   }
   render() {
     const puppies = this.state.puppies.map( puppy => {
